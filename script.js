@@ -15,43 +15,27 @@ var isMouseActive = false;
 var buttonColors = ["red", "blue", "green", "yellow"];
 var randomNumber = 0;
 
-
-
-
-///////////// FOR TEST /////////////////////////////////////////////////////////////////////////////
-
-var lastGamePattern = "";
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 $(document).on("keydown", function(){
 
     if(isKeyboardActive === true) {
-
         nextSequence();
-
     }
 
 });
 
-///////////////////////////////////////////////////////////////////////////////////////////////////    
-
+/////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 function nextSequence() {
 
     level++;
-
     userClickCounter = 0;
-
-
     isKeyboardActive = false;
     isMouseActive = true;
     
     $("h1").text("Simon Game");
     $("h2").text("Level " + level);
-
 
     randomNumber = Math.floor(Math.random() * 4);
     currentColor = buttonColors[randomNumber];
@@ -61,25 +45,17 @@ function nextSequence() {
     playSound(currentColor);
 
     console.log("**************************");
-    console.log(gamePattern[userClickCounter]);
-    
+    console.log(gamePattern[userClickCounter]);    
 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 $(".box").on("click", function(){
 
     if(isMouseActive === true) { 
-
           
-        var clickedColor = $(this).attr("id");       
-
+        var clickedColor = $(this).attr("id");
 
         if (clickedColor != gamePattern[userClickCounter]) {
 
@@ -97,26 +73,21 @@ $(".box").on("click", function(){
             if (userClickCounter === level) {
                 isKeyboardActive = false;
                 isMouseActive = false;
-                lastSequence = "";
                 setTimeout(function() {
                     nextSequence();
                 }, 1000);
-
-            } else {
+            } else {                
                 setTimeout(function() {
                     console.log(gamePattern[userClickCounter]); 
                 }, 500);
-
             }
-        }
- 
+        } 
 
     }
         
 });
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-    
+///////////////////////////////////////////////////////////////////////////////////////////////////    
 
 function gameOver() {
 
@@ -134,7 +105,6 @@ function gameOver() {
 
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 function addEffect(currentColor) {
@@ -146,7 +116,6 @@ function addEffect(currentColor) {
     }, 500);
 
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
